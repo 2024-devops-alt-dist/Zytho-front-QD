@@ -51,6 +51,13 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  font-size: 1.8rem;
+  color: var(--beer-brown);
+  margin: 10px 0;
+  text-align: center;
+}
+
 p {
   font-size: 1rem;
   color: var(--beer-dark);

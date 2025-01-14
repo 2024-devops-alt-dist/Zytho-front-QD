@@ -8,4 +8,5 @@
     city: string;
     country: string;
     organic_beer: boolean;
+    history: string;
 }
