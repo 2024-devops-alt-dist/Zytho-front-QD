@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import beerImage from "../assets/img/bieres_img.avif";
 import { Beer } from "../interfaces/IBeer";
+import "../assets/css/BeerDetails.css"
+import { Link } from "react-router-dom";
 function BeerDetailsPage() {
 
     const { id } = useParams();
@@ -26,23 +28,25 @@ function BeerDetailsPage() {
         if (!beer) {
             return <p>Chargement des détails de la bière...</p>;
         }
-        
+
     return(
-        <div>
-            <h1>Détails de la bière {beer.id}</h1>
+        <div className="beer-details-container">
+            <Link className="btn-details" to='/beerpage'> back
+            </Link>
+            <h1>Beer's Details: {beer.name}</h1>
 
             <img src={beerImage} alt={beer.name} style={{ width: '200px', height: 'auto' }} />
 
-            <p><strong>Nom:</strong> {beer.name}</p>
+            <p><strong>Name:</strong> {beer.name}</p>
             <p><strong>Description:</strong> {beer.description}</p>
-            <p><strong>Catégorie:</strong> {beer.category}</p>
+            <p><strong>Category:</strong> {beer.category}</p>
             <p><strong>ABV (Alcool par volume):</strong> {beer.abv}%</p>
-            <p><strong>Acidité:</strong> {beer.acidity}</p>
-            <p><strong>Amertume:</strong> {beer.bitterness}</p>
-            <p><strong>Douceur:</strong> {beer.sweetness}</p>
-            <p><strong>Type de contenant:</strong> {beer.container_type}</p>
-            <p><strong>Volume de la bière (ml):</strong> {beer.beer_volume}</p>
-            <p><strong>Bière biologique:</strong> {beer.organic_beer ? 'Oui' : 'Non'}</p>
+            <p><strong>Acidity:</strong> {beer.acidity}</p>
+            <p><strong>Bitterness:</strong> {beer.bitterness}</p>
+            <p><strong>Sweetness:</strong> {beer.sweetness}</p>
+            <p><strong>Container type:</strong> {beer.container_type}</p>
+            <p><strong>Beer volume (ml):</strong> {beer.beer_volume}</p>
+            <p><strong>Organic beer:</strong> {beer.organic_beer ? 'Yes' : 'No'}</p>
          
         </div>
     );

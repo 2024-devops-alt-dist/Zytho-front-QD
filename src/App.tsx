@@ -7,6 +7,7 @@ import HomePage from "./pages/HomePage";
 import BeerListPage from "./pages/BeerListPage";
 import BeerDetailsPage from "./pages/BeerDetailsPage";
 import BreweryListPage from "./pages/BreweryListPage";
+import BreweryDetailsPage from "./pages/BreweryDetailsPage";
 import { Routes, Route } from 'react-router-dom';
 
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/beerpage" element={<BeerListPage />} />
         <Route path="/beerpage/:id" element={<BeerDetailsPage />} />
         <Route path="/brewerypage" element={<BreweryListPage />} />
+        <Route path="/brewerypage/:id" element={<BreweryDetailsPage />} />
       </Routes>
       <Footer />
     </>
