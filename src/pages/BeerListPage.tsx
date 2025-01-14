@@ -1,22 +1,11 @@
 import { useState, useEffect } from "react";
 import "../assets/css/BeerList.css";
 import beerImage from "../assets/img/bieres_img.avif";
+import { Link } from "react-router-dom";
+import { Beer } from "../interfaces/IBeer";
 
 
-interface Beer {
-    id: number;
-    name: string;
-    description: string;
-    category: string;
-    image: string;
-    abv: number;
-    acidity: number;
-    bitterness: number;
-    sweetness: number;
-    container_type: string;
-    beer_volume: number;
-    organic_beer: boolean;
-}
+
 
 function BeerListPage() {
 
@@ -53,9 +42,9 @@ function BeerListPage() {
                             <h2 className="category">{beer.category}</h2>
                             <h1>{beer.name}</h1>
                             <p>{beer.description}</p>
-                            <button className="btn-details" onClick={() => alert(`Détails de la bière ${beer.name}: ${beer.description}`)}>
+                            <Link to={`/beerpage/${beer.id}`} className="btn-details">
                                 See more ...
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 ))}

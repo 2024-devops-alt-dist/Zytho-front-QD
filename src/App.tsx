@@ -10,8 +10,6 @@ import BreweryListPage from "./pages/BreweryListPage";
 import { Routes, Route } from 'react-router-dom';
 
 
-
-
 function App() {
 
   return (

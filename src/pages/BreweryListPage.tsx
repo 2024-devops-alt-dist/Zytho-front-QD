@@ -1,18 +1,7 @@
 import { useState, useEffect } from "react";
 import "../assets/css/BreweryList.css";
 import breweryImage from "../assets/img/brewery.jpg"
-
-interface Brewery {
-    id: number;
-    id_photo: number;
-    name: string;
-    description: string;
-    category: string;
-    address: string;
-    city: string;
-    country: string;
-    organic_beer: boolean;
-}
+import { Brewery } from "../interfaces/IBrewery";
 
 function BreweryListPage() {
 
