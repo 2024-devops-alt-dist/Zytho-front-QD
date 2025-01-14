@@ -1,0 +1,92 @@
+
+/* Palette de couleurs inspirée des bières */
+:root {
+    --beer-gold: #f7b800; /* Couleur dorée de bière blonde */
+    --beer-amber: #d17d3d; /* Ambre pour les bières ambrées */
+    --beer-brown: #6a4e39; /* Brune pour les bières brunes */
+    --beer-light: #f7e1a5; /* Teinte légère pour les bières plus douces */
+    --beer-dark: #3d2f2a; /* Teinte foncée pour les bières plus robustes */
+    --beer-white: #ffffff; /* Blanc pour les bières blanches */
+  }
+
+  .brewery-list {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; 
+    gap: 20px; 
+  }
+  
+  .brewery-card {
+    display: flex;
+    align-items: stretch;
+    background-color: var(--beer-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .brewery-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .brewery-card-img {
+    flex-shrink: 0; 
+    width: 300px; 
+    height: auto; 
+    max-height: 100%; 
+    object-fit: cover; 
+    border-right: 2px solid var(--beer-amber);
+  }
+  
+  .brewery-card-content {
+    width: 100%;
+    padding: 20px;
+    background-color: var(--beer-white);
+  }
+  
+  .category {
+    font-size: 1.2rem;
+    color: var(--beer-dark);
+    font-weight: 600;
+    margin-bottom: 5px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    color: var(--beer-brown);
+    margin: 10px 0;
+    text-align: center;
+  }
+  
+  p {
+    font-size: 1rem;
+    color: var(--beer-dark);
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+  
+  .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .btn-details {
+    background-color: #f59e0b; /* Couleur orange (peut être ajustée) */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-details:hover {
+    background-color: #d97706; /* Couleur orange plus foncée au survol */
+  }
+  
+  
