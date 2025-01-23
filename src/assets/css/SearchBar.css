@@ -1,0 +1,67 @@
+.search-bar {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    
+  }
+  
+  /* Style de l'input */
+  .search-bar input {
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 5px;
+    border: 2px solid #ddd;
+    font-size: 16px;
+    background-color: #f8f8f8;
+    color: #333;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .search-bar input:focus {
+    outline: none;
+    border-color: #6a4e39; 
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); 
+  }
+
+  /* A REVOIR */
+  
+  /* Liste des suggestions */
+  .suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 8px;
+    padding: 0;
+    background-color: #fff;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+  }
+  
+  /* Éléments de la liste des suggestions */
+  .suggestions-list li {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    transition: background-color 0.2s ease;
+  }
+  
+  /* Effet au survol des suggestions */
+  .suggestions-list li:hover {
+    background-color: #f0f0f0;
+    color: #3b82f6; /* Bleu clair */
+  }
+  
+  /* Style pour les liens dans les suggestions */
+  .suggestions-list a {
+    text-decoration: none;
+    color: inherit;
+  }

@@ -14,7 +14,7 @@ function BeerDetailsPage() {
         try {
             const response = await fetch(`http://localhost:3000/api/v1/beers/${id}`);
             const data = await response.json();
-            setBeer(data.data); // Assurez-vous que la structure de réponse correspond bien
+            setBeer(data.data); 
             console.log("Bière récupérée avec succès :", data.data);
         } catch (error) {
             console.error("Erreur lors de la récupération des détails de la bière :", error);
