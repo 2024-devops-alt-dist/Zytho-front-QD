@@ -1,13 +1,16 @@
 import wallBeer from "../assets/img/wallbeer.jpg";
 import SearchBar from "../components/Searchbar";
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = ({ onSearch }: { onSearch: (query: string) => void }) => {
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   const handleSearchClick = () => {
     console.log("Search button clicked with query:", query);
     onSearch(query);
+    navigate('/beerpage');
   };
 
 
@@ -15,6 +18,7 @@ const HeroSection = ({ onSearch }: { onSearch: (query: string) => void }) => {
     setQuery(newQuery);
     console.log("Search submitted with query:", newQuery);
     onSearch(newQuery);
+    navigate('/beerpage');
   };
 
   const handleQueryChange = (newQuery: string) => {
