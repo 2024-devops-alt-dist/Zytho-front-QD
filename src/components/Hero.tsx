@@ -3,7 +3,7 @@ import SearchBar from "../components/Searchbar";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const HeroSection = ({ onSearch }: { onSearch: (query: string) => void }) => {
+const HeroSection = ({ onSearch, beerNames }: { onSearch: (query: string) => void, beerNames: string[] }) => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -39,7 +39,7 @@ const HeroSection = ({ onSearch }: { onSearch: (query: string) => void }) => {
           <div className="flex w-full md:justify-start justify-center items-end">
             <div className="relative mr-4 lg:w-full xl:w-1/2 w-2/4">
               <label htmlFor="search-field" className="leading-7 text-lg font-extrabold text-gray-800">Looking for a particular beer?</label>
-              <SearchBar onSearch={handleSearchSubmit} onQueryChange={handleQueryChange} />
+              <SearchBar onSearch={handleSearchSubmit} onQueryChange={handleQueryChange} suggestions={beerNames}/>
             </div>
             <button className="inline-flex btn-details" onClick={handleSearchClick}>Search</button>
           </div>

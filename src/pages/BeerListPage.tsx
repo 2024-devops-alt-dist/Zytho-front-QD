@@ -6,11 +6,13 @@ import { Beer } from "../interfaces/IBeer";
 
 interface BeerListPageProps {
     searchQuery: string;
+    onBeerNamesFetched: (names: string[]) => void;
   }
-function BeerListPage({ searchQuery }: BeerListPageProps) {
+function BeerListPage({ searchQuery, onBeerNamesFetched }: BeerListPageProps) {
 
     const [beers, setBeers] = useState<Beer[]>([]);
     const [filteredBeers, setFilteredBeers] = useState<Beer[]>([]);
+ 
 
     useEffect(() => {
         fetchBeers();
@@ -37,6 +39,7 @@ function BeerListPage({ searchQuery }: BeerListPageProps) {
 
             setBeers(data.data);
             setFilteredBeers(data.data);
+            onBeerNamesFetched(data.data.map((beer: Beer) => beer.name));
         } catch (error) {
             console.error("Error fetching beers:", error);
         }

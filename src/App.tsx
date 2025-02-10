@@ -13,6 +13,7 @@ import { useState } from "react";
 
 const App = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [beerNames, setBeerNames] = useState<string[]>([]);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query); // This will trigger the search update in BeerListPage
@@ -25,10 +26,10 @@ const App = () => {
       <Button title="Mon bouton 2" text="Now" /> */}
 
       <Header />
-      <HeroSection onSearch={handleSearch} />
+      <HeroSection onSearch={handleSearch} beerNames={beerNames} />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/beerpage" element={<BeerListPage searchQuery={searchQuery} />} />
+        <Route path="/beerpage" element={<BeerListPage searchQuery={searchQuery} onBeerNamesFetched={setBeerNames} />} />
         <Route path="/beerpage/:id" element={<BeerDetailsPage />} />
         <Route path="/brewerypage" element={<BreweryListPage />} />
         <Route path="/brewerypage/:id" element={<BreweryDetailsPage />} />
