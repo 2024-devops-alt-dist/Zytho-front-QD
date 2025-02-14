@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:3000/api/v1";
+const API_BASE_URL = "https://zythoapi-qd.onrender.com/api/v1";
 
 export const apiService = {
     getBreweries: async () => {
@@ -10,6 +10,12 @@ export const apiService = {
     getBreweryById: async (id: number) => {
         const response = await fetch(`${API_BASE_URL}/breweries/${id}`);
         if (!response.ok) throw new Error("Erreur lors de la récupération de la brasserie");
+        return response.json();
+    },
+
+    getBreweriesByBeerId: async (beerId: number) => {
+        const response = await fetch(`${API_BASE_URL}/beers/${beerId}/breweries`);
+        if (!response.ok) throw new Error("Erreur lors de la récupération des brasseries");
         return response.json();
     },
 
