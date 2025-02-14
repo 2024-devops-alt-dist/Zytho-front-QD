@@ -3,7 +3,7 @@ import "../assets/css/BeerList.css";
 import beerImage from "../assets/img/bieres_img.avif";
 import { Link } from "react-router-dom";
 import { Beer } from "../interfaces/IBeer";
-
+import { apiService } from "../services/ApiServices";
 interface BeerListPageProps {
     searchQuery: string;
     onBeerNamesFetched: (names: string[]) => void;
@@ -29,17 +29,10 @@ function BeerListPage({ searchQuery, onBeerNamesFetched }: BeerListPageProps) {
 
     const fetchBeers = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/v1/beers");
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const data = await response.json();
-
-            setBeers(data.data);
-            setFilteredBeers(data.data);
-            onBeerNamesFetched(data.data.map((beer: Beer) => beer.name));
+            const response = await apiService.getBeers();
+            setBeers(response.data);
+            setFilteredBeers(response.data);
+            onBeerNamesFetched(response.data.map((beer: Beer) => beer.name));
         } catch (error) {
             console.error("Error fetching beers:", error);
         }

@@ -4,25 +4,25 @@ import beerImage from "../assets/img/bieres_img.avif";
 import { Beer } from "../interfaces/IBeer";
 import "../assets/css/BeerDetails.css"
 import { Link } from "react-router-dom";
+import { apiService } from "../services/ApiServices";
 function BeerDetailsPage() {
 
-    const { id } = useParams();
+    const { id } = useParams<{ id: string }>();
 
     const [beer, setBeer] = useState<Beer | null>(null);
 
-    const fetchBeerDetails = async () => {
+    const fetchBeerDetails = async (beerId: number) => {
         try {
-            const response = await fetch(`http://localhost:3000/api/v1/beers/${id}`);
-            const data = await response.json();
-            setBeer(data.data); 
-            console.log("Bière récupérée avec succès :", data.data);
+            const response = await apiService.getBeerById(beerId);
+            setBeer(response.data); 
+            console.log("Bière récupérée avec succès :", response.data);
         } catch (error) {
             console.error("Erreur lors de la récupération des détails de la bière :", error);
         }
     };
 
     useEffect(() => {
-        fetchBeerDetails();
+        fetchBeerDetails(Number(id));
         }, [id]);
 
         if (!beer) {

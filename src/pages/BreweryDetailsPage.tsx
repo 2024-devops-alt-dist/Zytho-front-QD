@@ -6,6 +6,7 @@ import "../assets/css/BreweryDetails.css"
 import { Brewery } from "../interfaces/IBrewery";
 import { Beer } from "../interfaces/IBeer";
 import { Link } from "react-router-dom";
+import { apiService } from "../services/ApiServices";
 function BreweryDetailsPage() {
 
     const { id } = useParams();
@@ -16,14 +17,12 @@ function BreweryDetailsPage() {
     const fetchBreweryDetails = async () => {
         try {
             // récupère les brasseries
-            const breweryResponse = await fetch(`http://localhost:3000/api/v1/breweries/${id}`);
-            const breweryData = await breweryResponse.json();
-            setbrewery(breweryData.data);
+            const breweryResponse = await apiService.getBreweryById(Number(id));
+            setbrewery(breweryResponse.data);
             
             // récupère les bières de la brasserie
-            const beersResponse = await fetch(`http://localhost:3000/api/v1/breweries/${id}/beers`);
-            const beersData = await beersResponse.json();
-            setBeers(beersData.data);
+            const beersResponse = await apiService.getBeersByBrewery(Number(id));
+            setBeers(beersResponse.data);
 
         } catch (error) {
             console.error("Erreur lors de la récupération des détails de la brasserie :", error);

@@ -3,6 +3,7 @@ import "../assets/css/BreweryList.css";
 import breweryImage from "../assets/img/brewery.jpg"
 import { Brewery } from "../interfaces/IBrewery";
 import { Link } from "react-router-dom";
+import { apiService } from "../services/ApiServices";
 function BreweryListPage() {
 
     const [breweries, setBreweries] = useState<Brewery[]>([]);
@@ -13,15 +14,12 @@ function BreweryListPage() {
 
     const fetchBreweries = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/v1/breweries");
-
+            const response = await apiService.getBreweries();
+            setBreweries(response.data);
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
-
-            const data = await response.json();
-
-            setBreweries(data.data);
+            
         } catch (error) {
             console.error("Error fetching breweries:", error);
         }
