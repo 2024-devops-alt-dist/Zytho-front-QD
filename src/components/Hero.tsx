@@ -3,7 +3,13 @@ import SearchBar from "../components/Searchbar";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const HeroSection = ({ onSearch, beerNames }: { onSearch: (query: string) => void, beerNames: string[] }) => {
+interface HeroSectionProps {
+  onSearch: (query: string) => void;
+  beerNames: string[];
+  isLoggedIn: boolean;
+  username: string;
+}
+const HeroSection: React.FC<HeroSectionProps> = ({ onSearch, beerNames, isLoggedIn, username }) => {
   const [query, setQuery] = useState("");
   const navigate = useNavigate();
 
@@ -12,7 +18,6 @@ const HeroSection = ({ onSearch, beerNames }: { onSearch: (query: string) => voi
     onSearch(query);
     navigate('/beerpage');
   };
-
 
   const handleSearchSubmit = (newQuery: string) => {
     setQuery(newQuery);
@@ -32,7 +37,9 @@ const HeroSection = ({ onSearch, beerNames }: { onSearch: (query: string) => voi
           <img className="object-cover object-center rounded" alt="hero" src={wallBeer} />
         </div>
         <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
+        {isLoggedIn && <h2 className="text-2xl mb-4 font-medium text-gray-900">Hello {username}</h2>}
           <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Discover your next favorite brew</h1>
+          
           <p className="mb-8 leading-relaxed">
             Explore a world of flavors with our curated collection of beers from breweries across the globe. Whether you're a craft beer enthusiast or just starting your journey, we help you discover your next favorite brew.
           </p>

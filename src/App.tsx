@@ -14,9 +14,22 @@ import { useState } from "react";
 const App = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [beerNames, setBeerNames] = useState<string[]>([]);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState("");
+
 
   const handleSearch = (query: string) => {
     setSearchQuery(query); // This will trigger the search update in BeerListPage
+  };
+
+  const handleLoginSuccess = (user: string) => {
+    setIsLoggedIn(true);
+    setUsername(user);
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUsername("");
   };
 
   return (
@@ -25,8 +38,8 @@ const App = () => {
       <Button title="Mon bouton 1" text="clique-moi" />
       <Button title="Mon bouton 2" text="Now" /> */}
 
-      <Header />
-      <HeroSection onSearch={handleSearch} beerNames={beerNames} />
+      <Header isLoggedIn={isLoggedIn} username={username} onLogout={handleLogout} onLoginSuccess={handleLoginSuccess}/>
+      <HeroSection onSearch={handleSearch} beerNames={beerNames} isLoggedIn={isLoggedIn} username={username} />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/beerpage" element={<BeerListPage searchQuery={searchQuery} onBeerNamesFetched={setBeerNames} />} />

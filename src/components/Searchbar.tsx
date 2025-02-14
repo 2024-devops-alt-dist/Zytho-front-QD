@@ -17,7 +17,7 @@ const SearchBar = ({ onSearch, onQueryChange, suggestions}: SearchBarProps) => {
 
     const filtered = suggestions
       .filter((suggestion) => suggestion.toLowerCase().includes(newQuery.toLowerCase()))
-      .slice(0, 5); // Limite à 5 suggestions
+      .slice(0, 5);
 
     setFilteredSuggestions(filtered);
   };
